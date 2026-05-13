@@ -16,16 +16,16 @@ TagManager:
   - 
   - 
   - 
+  - Building
+  - 
+  - Player
+  - Enemy
   - 
   - 
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - RainBlocker
   - 
   - 
   - 
@@ -50,11 +50,23 @@ TagManager:
   - name: Rain
     uniqueID: 1384601843
     locked: 0
-  - name: Ground
-    uniqueID: 1166331879
+  - name: Building
+    uniqueID: 1576949395
+    locked: 0
+  - name: Bullet
+    uniqueID: 1948043733
+    locked: 0
+  - name: Enemy
+    uniqueID: 252668857
     locked: 0
   - name: Player
     uniqueID: 2039682973
+    locked: 0
+  - name: Water
+    uniqueID: 3516753939
+    locked: 0
+  - name: Ground
+    uniqueID: 1166331879
     locked: 0
   - name: Debug
     uniqueID: 689921687

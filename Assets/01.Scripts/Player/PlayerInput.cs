@@ -6,6 +6,8 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private InputActionReference _moveAction;
     [SerializeField] private InputActionReference _jumpAction;
     [SerializeField] private InputActionReference _umbrellaAction;
+    [SerializeField] private InputActionReference _attackAction;
+
 
     public Vector2 MoveInput { get; private set; }
     public bool IsUmbrellaHeld { get; private set; }
@@ -14,12 +16,14 @@ public class PlayerInput : MonoBehaviour
 
 
     private bool _jumpPressed;
+    private bool _attackPressed;
 
     private void OnEnable()
     {
         _moveAction.action.Enable();
         _jumpAction.action.Enable();
         _umbrellaAction.action.Enable();
+        _attackAction.action.Enable();
 
     }
 
@@ -28,6 +32,7 @@ public class PlayerInput : MonoBehaviour
         _moveAction.action.Disable();
         _jumpAction.action.Disable();
         _umbrellaAction.action.Disable();
+        _attackAction.action.Disable();
 
     }
 
@@ -42,6 +47,10 @@ public class PlayerInput : MonoBehaviour
         {
             _jumpPressed = true;
         }
+        if (_attackAction.action.WasPressedThisFrame())
+        {
+            _attackPressed = true;
+        }
     }
 
     public bool ConsumeJumpPressed()
@@ -54,4 +63,23 @@ public class PlayerInput : MonoBehaviour
         _jumpPressed = false;
         return true;
     }
+    public bool ConsumeAttackPressed()
+    {
+        if (!_attackPressed)
+        {
+            return false;
+        }
+
+        _attackPressed = false;
+        return true;
+    }
+    public bool ExpressPressed()
+    {
+        if(_attackAction)
+        {
+            
+        }
+        return true;
+    }
+
 }

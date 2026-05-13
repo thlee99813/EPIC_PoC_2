@@ -5,6 +5,9 @@ public class AcidRainDamageArea : MonoBehaviour
 {
     [SerializeField] private float _damage = 0.5f;
     [SerializeField] private float _damageInterval = 0.1f;
+    [SerializeField] private LayerMask _rainBlockLayer;
+    [SerializeField] private float _rainBlockCheckDistance = 30f;
+
 
     private readonly List<IDamageable> _targets = new();
     private float _damageTimer;
@@ -29,26 +32,28 @@ public class AcidRainDamageArea : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.TryGetComponent(out IDamageable damageable))
+        if (!other.TryGetComponent(out PlayerStats playerStats))
         {
             return;
         }
 
-        if (!_targets.Contains(damageable))
+        if (!_targets.Contains(playerStats))
         {
-            _targets.Add(damageable);
+            _targets.Add(playerStats);
         }
     }
+
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.TryGetComponent(out IDamageable damageable))
+        if (!other.TryGetComponent(out PlayerStats playerStats))
         {
             return;
         }
 
-        _targets.Remove(damageable);
+        _targets.Remove(playerStats);
     }
+
 
     private void DamageTargets()
     {
@@ -56,7 +61,50 @@ public class AcidRainDamageArea : MonoBehaviour
 
         for (int i = _targets.Count - 1; i >= 0; i--)
         {
-            _targets[i].TakeDamage(damageInfo);
+            IDamageable target = _targets[i];
+
+            if (IsBlockedByRainBlocker(target))
+            {
+                continue;
+            }
+
+            if (IsBlockedByUmbrella(target))
+            {
+                continue;
+            }
+
+            target.TakeDamage(damageInfo);
+
         }
     }
+    private bool IsBlockedByRainBlocker(IDamageable target)
+    {
+        Component component = target as Component;
+
+        if (component == null)
+        {
+            return false;
+        }
+
+        RaycastHit2D hit = Physics2D.Raycast(component.transform.position, Vector2.up, _rainBlockCheckDistance, _rainBlockLayer);
+        return hit.collider != null;
+    }
+
+    private bool IsBlockedByUmbrella(IDamageable target)
+    {
+        Component component = target as Component;
+
+        if (component == null)
+        {
+            return false;
+        }
+
+        if (!component.TryGetComponent(out PlayerUmbrella umbrella))
+        {
+            return false;
+        }
+
+        return umbrella.IsBlockingRain;
+    }
+
 }

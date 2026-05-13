@@ -6,15 +6,28 @@ using UnityEngine;
 public class PlayerUmbrella : MonoBehaviour
 {
     [SerializeField] private Transform _playerHandRoute;
+    [SerializeField] private Transform _rainBlockDirection;
+
     [SerializeField] private float _raiseAngle = -90f;
     [SerializeField] private float _lowerAngle = 0f;
     [SerializeField] private float _rotateDuration = 0.12f;
+    [SerializeField] private float _rainBlockAngle = 45f;
+
 
     private PlayerInput _playerInput;
     private Tween _rotateTween;
     private bool _wasUmbrellaHeld;
 
-    public bool IsBlockingRain => _playerInput.IsUmbrellaHeld;
+    public bool IsBlockingRain
+    {
+        get
+        {
+            float angle = Vector2.Angle(_rainBlockDirection.up, Vector2.up);
+            return angle <= _rainBlockAngle;
+        }
+    }
+
+    public bool IsBlockingProjectile => _playerInput.IsUmbrellaHeld;
 
     private void Awake()
     {
