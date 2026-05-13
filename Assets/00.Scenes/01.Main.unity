@@ -5229,8 +5229,8 @@ Transform:
   m_GameObject: {fileID: 418372479}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7215957, w: 0.69231474}
-  m_LocalPosition: {x: 0.00000008940698, y: 0.6400002, z: 0}
-  m_LocalScale: {x: 0.031250004, y: 0.12219781, z: 0.12219777}
+  m_LocalPosition: {x: -0.007, y: 0.244, z: 0}
+  m_LocalScale: {x: 0.7017925, y: 0.6237502, z: 0.12219777}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2076394027}
@@ -9091,7 +9091,7 @@ GameObject:
   - component: {fileID: 709361566}
   - component: {fileID: 709361565}
   - component: {fileID: 709361567}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: AcidRain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9900,7 +9900,7 @@ ParticleSystem:
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
     alignToDirection: 0
-    m_Texture: {fileID: 10912, guid: 0000000000000000f000000000000000, type: 0}
+    m_Texture: {fileID: 0}
     m_TextureClipChannel: 3
     m_TextureClipThreshold: 0
     m_TextureUVChannel: 0
@@ -12779,15 +12779,16 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
-    type: 0
-    collisionMode: 0
+    type: 1
+    collisionMode: 1
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
     multiplyColliderForceByCollisionAngle: 1
-    m_Planes: []
+    m_Planes:
+    - {fileID: 0}
     m_Dampen:
       serializedVersion: 2
       minMaxState: 0
@@ -12844,7 +12845,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -12897,7 +12898,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -12949,7 +12950,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minKillSpeed: 0
     maxKillSpeed: 10000
-    radiusScale: 1
+    radiusScale: 0.3
     collidesWith:
       serializedVersion: 2
       m_Bits: 4294967295
@@ -26753,7 +26754,7 @@ GameObject:
   - component: {fileID: 2032080647}
   - component: {fileID: 2032080648}
   - component: {fileID: 2032080649}
-  m_Layer: 13
+  m_Layer: 20
   m_Name: UmbrellaBlocker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26864,11 +26865,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.028703243, y: 0.6835666}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -26878,7 +26879,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.6691182, y: 2.367133}
   m_EdgeRadius: 0
 --- !u!114 &2032080649
 MonoBehaviour:
@@ -27142,10 +27143,22 @@ MonoBehaviour:
     m_Bits: 16384
   _prepareAngle: 45
   _strikeAngle: -90
-  _idleAngle: 0
+  _idleAngle: 20
   _prepareDuration: 0.07
   _strikeDuration: 0.09
   _recoverDuration: 0.08
+--- !u!114 &2051354914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051354876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 759db4ab4ed818f459a0e562cb6d4598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttackController
 --- !u!1 &2060688876
 GameObject:
   m_ObjectHideFlags: 0
@@ -28261,6 +28274,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6828445204364702368, guid: 8c892d080c0311a42b8d7ef6a4d2fb24, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2051354903}
+    - targetCorrespondingSourceObject: {fileID: 6828445204364702368, guid: 8c892d080c0311a42b8d7ef6a4d2fb24, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2051354914}
   m_SourcePrefab: {fileID: 100100000, guid: 8c892d080c0311a42b8d7ef6a4d2fb24, type: 3}
 --- !u!1001 &5993409935570883192
 PrefabInstance:

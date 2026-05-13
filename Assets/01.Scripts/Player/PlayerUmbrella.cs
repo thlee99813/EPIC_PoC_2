@@ -17,6 +17,8 @@ public class PlayerUmbrella : MonoBehaviour
     private PlayerInput _playerInput;
     private Tween _rotateTween;
     private bool _wasUmbrellaHeld;
+    private bool _isLocked;
+
 
     public bool IsBlockingRain
     {
@@ -36,6 +38,10 @@ public class PlayerUmbrella : MonoBehaviour
 
     private void Update()
     {
+        if (_isLocked)
+        {
+            return;
+        }
         if (_wasUmbrellaHeld == _playerInput.IsUmbrellaHeld)
         {
             return;
@@ -43,6 +49,15 @@ public class PlayerUmbrella : MonoBehaviour
 
         _wasUmbrellaHeld = _playerInput.IsUmbrellaHeld;
         RotateUmbrella();
+    }
+    public void SetControlLocked(bool isLocked)
+    {
+        _isLocked = isLocked;
+
+        if (_isLocked)
+        {
+            _rotateTween?.Kill();
+        }
     }
 
     private void OnDestroy()
