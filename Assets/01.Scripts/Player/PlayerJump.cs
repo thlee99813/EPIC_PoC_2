@@ -5,15 +5,15 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerGroundChecker))]
 public class PlayerJump : MonoBehaviour
 {
-    [SerializeField] private float _jumpForce = 12f;
-
     private Rigidbody2D _rigidbody;
+    private PlayerStats _playerStats;
     private PlayerInput _playerInput;
     private PlayerGroundChecker _groundChecker;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        _playerStats = GetComponent<PlayerStats>();
         _playerInput = GetComponent<PlayerInput>();
         _groundChecker = GetComponent<PlayerGroundChecker>();
     }
@@ -30,10 +30,7 @@ public class PlayerJump : MonoBehaviour
             return false;
         }
 
-        _rigidbody.linearVelocity = new Vector2(
-            _rigidbody.linearVelocity.x,
-            _jumpForce
-        );
+        _rigidbody.linearVelocity = new Vector2(_rigidbody.linearVelocity.x, _playerStats.JumpForce);
 
         return true;
     }

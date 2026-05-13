@@ -5,33 +5,33 @@ public class PlayerHealthUI : MonoBehaviour
 {
     [SerializeField] private Slider _healthSlider;
 
-    private PlayerHealth _playerHealth;
+    private PlayerStats _playerStats;
 
     private void OnDisable()
     {
-        if (_playerHealth != null)
+        if (_playerStats != null)
         {
-            _playerHealth.HealthChanged -= Refresh;
+            _playerStats.HealthChanged -= Refresh;
         }
     }
 
-    public void Bind(PlayerHealth playerHealth)
+    public void Bind(PlayerStats playerStats)
     {
-        if (_playerHealth != null)
+        if (_playerStats != null)
         {
-            _playerHealth.HealthChanged -= Refresh;
+            _playerStats.HealthChanged -= Refresh;
         }
 
-        _playerHealth = playerHealth;
-        _playerHealth.HealthChanged += Refresh;
+        _playerStats = playerStats;
+        _playerStats.HealthChanged += Refresh;
 
         _healthSlider.minValue = 0f;
         _healthSlider.maxValue = 1f;
 
-        Refresh(_playerHealth.CurrentHealth, _playerHealth.MaxHealth);
+        Refresh(_playerStats.CurrentHealth, _playerStats.MaxHealth);
     }
 
-    private void Refresh(int currentHealth, int maxHealth)
+    private void Refresh(float currentHealth, float maxHealth)
     {
         _healthSlider.value = (float)currentHealth / maxHealth;
     }

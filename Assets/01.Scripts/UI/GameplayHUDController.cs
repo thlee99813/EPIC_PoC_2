@@ -7,6 +7,6 @@ public class GameplayHUDController : MonoBehaviour
 
     private void Start()
     {
-        _playerHealthUI.Bind(_player.Health);
+        _playerHealthUI.Bind(_player.Stats);
     }
 }

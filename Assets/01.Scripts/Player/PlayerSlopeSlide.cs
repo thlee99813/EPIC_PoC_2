@@ -5,10 +5,9 @@ using UnityEngine;
 public class PlayerSlopeSlide : MonoBehaviour
 {
     [SerializeField] private float _slideStartAngle = 12f;
-    [SerializeField] private float _slideSpeed = 30f;
-    [SerializeField] private float _slideAcceleration = 180f;
 
     private Rigidbody2D _rigidbody;
+    private PlayerStats _playerStats;
     private PlayerGroundChecker _groundChecker;
 
     public bool IsSlidingSlope =>
@@ -18,7 +17,9 @@ public class PlayerSlopeSlide : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        _playerStats = GetComponent<PlayerStats>();
         _groundChecker = GetComponent<PlayerGroundChecker>();
+
     }
 
     public void Slide()
@@ -38,12 +39,8 @@ public class PlayerSlopeSlide : MonoBehaviour
             slideDirection = -slideDirection;
         }
 
-        Vector2 targetVelocity = slideDirection.normalized * _slideSpeed;
+        Vector2 targetVelocity = slideDirection.normalized * _playerStats.SlideSpeed;
+        _rigidbody.linearVelocity = Vector2.MoveTowards(_rigidbody.linearVelocity, targetVelocity, _playerStats.SlideAcceleration * Time.fixedDeltaTime);
 
-        _rigidbody.linearVelocity = Vector2.MoveTowards(
-            _rigidbody.linearVelocity,
-            targetVelocity,
-            _slideAcceleration * Time.fixedDeltaTime
-        );
     }
 }

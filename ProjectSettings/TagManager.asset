@@ -47,6 +47,12 @@ TagManager:
   - name: Default
     uniqueID: 2164910427
     locked: 0
+  - name: Rain
+    uniqueID: 1384601843
+    locked: 0
+  - name: Ground
+    uniqueID: 1166331879
+    locked: 0
   - name: Player
     uniqueID: 2039682973
     locked: 0
