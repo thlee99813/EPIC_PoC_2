@@ -73,13 +73,5 @@ public class PlayerInput : MonoBehaviour
         _attackPressed = false;
         return true;
     }
-    public bool ExpressPressed()
-    {
-        if(_attackAction)
-        {
-            
-        }
-        return true;
-    }
-
+    
 }

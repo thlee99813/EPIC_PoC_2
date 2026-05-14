@@ -5,6 +5,7 @@ public class AcidRainDamageArea : MonoBehaviour
 {
     [SerializeField] private float _damage = 0.5f;
     [SerializeField] private float _damageInterval = 0.1f;
+    [SerializeField] private float _spGainWhenBlocked = 1f;
     [SerializeField] private LayerMask _rainBlockLayer;
     [SerializeField] private float _rainBlockCheckDistance = 30f;
 
@@ -63,17 +64,24 @@ public class AcidRainDamageArea : MonoBehaviour
         {
             IDamageable target = _targets[i];
 
-            if (IsBlockedByRainBlocker(target))
+        if (IsBlockedByRainBlocker(target))
+        {
+            continue;
+        }
+
+        if (IsBlockedByUmbrella(target))
+        {
+            if (target is PlayerStats playerStats)
             {
-                continue;
+                playerStats.GainRainSP(_spGainWhenBlocked);
             }
 
-            if (IsBlockedByUmbrella(target))
-            {
-                continue;
-            }
+            continue;
+        }
 
-            target.TakeDamage(damageInfo);
+        target.TakeDamage(damageInfo);
+
+
 
         }
     }

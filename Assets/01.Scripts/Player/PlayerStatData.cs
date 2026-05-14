@@ -6,6 +6,9 @@ public class PlayerStatData : ScriptableObject
     [Header("Health")]
     [SerializeField] private float _maxHealth = 100f;
 
+    [Header("SP")]
+    [SerializeField] private float _maxSP = 100f;
+
     [Header("Combat")]
     [SerializeField] private int _attackPower = 10;
 
@@ -27,4 +30,6 @@ public class PlayerStatData : ScriptableObject
     public float SlideSpeed => _slideSpeed;
     public float SlideAcceleration => _slideAcceleration;
     public float RainResistance => _rainResistance;
+    public float MaxSP => _maxSP;
+
 }

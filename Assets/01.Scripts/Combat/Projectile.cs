@@ -36,7 +36,8 @@ public class Projectile : MonoBehaviour
         {
             return;
         }
-        if (other.TryGetComponent(out UmbrellaBlocker blocker) && blocker.CanBlock)
+
+        if (other.TryGetComponent(out UmbrellaBlocker blocker) && blocker.TryBlock())
         {
             Destroy(gameObject);
             return;
