@@ -6402,7 +6402,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.3999996, y: 1.955, z: -20}
+  m_LocalPosition: {x: -7.348151, y: 2.2438896, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25404,7 +25404,7 @@ Transform:
   m_GameObject: {fileID: 1879523642}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.3999996, y: 1.955, z: -20}
+  m_LocalPosition: {x: -7.348151, y: 2.2438896, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25425,13 +25425,13 @@ MonoBehaviour:
   CameraDistance: 10
   DeadZoneDepth: 0
   Composition:
-    ScreenPosition: {x: 0, y: 0}
+    ScreenPosition: {x: -0.00364504, y: 0.03611073}
     DeadZone:
       Enabled: 0
-      Size: {x: 0.2, y: 0.2}
+      Size: {x: 0.9270847, y: 0.80555564}
     HardLimits:
       Enabled: 0
-      Size: {x: 0.8, y: 0.8}
+      Size: {x: 0.9270847, y: 0.80555564}
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
   TargetOffset: {x: 5, y: 2, z: -10}
@@ -25439,8 +25439,8 @@ MonoBehaviour:
   Lookahead:
     Enabled: 0
     Time: 0
-    Smoothing: 0
-    IgnoreY: 0
+    Smoothing: 4
+    IgnoreY: 1
 --- !u!1 &1881747969
 GameObject:
   m_ObjectHideFlags: 0
